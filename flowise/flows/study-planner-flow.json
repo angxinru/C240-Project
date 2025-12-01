@@ -1,0 +1,72 @@
+{
+  "name": "study-planner-flow",
+  "description": "Flow configuration for the AI-powered Study Planner Chatbot.",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "start",
+      "next": "greetUser"
+    },
+    {
+      "id": "greetUser",
+      "type": "text",
+      "text": "Hello! I'm your Study Planner Chatbot. How can I assist you today?",
+      "next": "getUserInput"
+    },
+    {
+      "id": "getUserInput",
+      "type": "input",
+      "prompt": "Please tell me what you need help with (e.g., creating a study timetable, getting study tips, etc.).",
+      "next": "processInput"
+    },
+    {
+      "id": "processInput",
+      "type": "function",
+      "function": "processUserInput",
+      "next": "generateResponse"
+    },
+    {
+      "id": "generateResponse",
+      "type": "llm",
+      "model": "gpt-3.5-turbo",
+      "prompt": "{{userInput}}",
+      "next": "sendResponse"
+    },
+    {
+      "id": "sendResponse",
+      "type": "text",
+      "text": "{{llmResponse}}",
+      "next": "end"
+    },
+    {
+      "id": "end",
+      "type": "end"
+    }
+  ],
+  "connections": [
+    {
+      "from": "start",
+      "to": "greetUser"
+    },
+    {
+      "from": "greetUser",
+      "to": "getUserInput"
+    },
+    {
+      "from": "getUserInput",
+      "to": "processInput"
+    },
+    {
+      "from": "processInput",
+      "to": "generateResponse"
+    },
+    {
+      "from": "generateResponse",
+      "to": "sendResponse"
+    },
+    {
+      "from": "sendResponse",
+      "to": "end"
+    }
+  ]
+}

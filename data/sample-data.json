@@ -1,0 +1,51 @@
+{
+  "subjects": [
+    {
+      "name": "Mathematics",
+      "availableTimes": ["Monday 10:00-12:00", "Wednesday 14:00-16:00"],
+      "studyTips": [
+        "Practice problems regularly.",
+        "Understand the concepts before memorizing formulas."
+      ]
+    },
+    {
+      "name": "History",
+      "availableTimes": ["Tuesday 13:00-15:00", "Thursday 09:00-11:00"],
+      "studyTips": [
+        "Create timelines to visualize events.",
+        "Use flashcards for important dates and figures."
+      ]
+    },
+    {
+      "name": "Biology",
+      "availableTimes": ["Monday 15:00-17:00", "Friday 10:00-12:00"],
+      "studyTips": [
+        "Draw diagrams to understand processes.",
+        "Group study can help clarify complex topics."
+      ]
+    }
+  ],
+  "timelines": [
+    {
+      "period": "Week 1",
+      "tasks": [
+        "Review Chapter 1 of Mathematics",
+        "Read Section 2 of History"
+      ]
+    },
+    {
+      "period": "Week 2",
+      "tasks": [
+        "Complete Biology lab report",
+        "Prepare for Mathematics quiz"
+      ]
+    }
+  ],
+  "studyAvailability": {
+    "Monday": ["10:00-12:00", "15:00-17:00"],
+    "Tuesday": ["13:00-15:00"],
+    "Wednesday": ["14:00-16:00"],
+    "Thursday": ["09:00-11:00"],
+    "Friday": ["10:00-12:00"]
+  }
+}
