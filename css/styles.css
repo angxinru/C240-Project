@@ -209,6 +209,38 @@ input[type="text"]:focus-visible {
   font-size: 1rem;
 }
 
+.forecast {
+  margin-top: 0.85rem;
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.forecast-day {
+  border-radius: 12px;
+  padding: 0.55rem 0.6rem;
+  background: rgba(0, 180, 216, 0.05);
+  border: 1px solid rgba(0, 180, 216, 0.12);
+  font-size: 0.8rem;
+}
+
+.forecast-day__label {
+  font-weight: 600;
+  margin-bottom: 0.1rem;
+}
+
+.forecast-day__temp {
+  font-size: 0.9rem;
+}
+
+.forecast-day__desc {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+}
+
 .section {
   padding: 2.5rem 0 3rem;
 }

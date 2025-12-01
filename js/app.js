@@ -1,9 +1,12 @@
+import { getBeachForecast } from "./weather.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const nextSlotEl = document.getElementById("next-slot");
   const weatherSummaryEl = document.getElementById("weather-summary");
   const crewListEl = document.getElementById("crew-list");
   const locationForm = document.querySelector(".hero-cta");
   const locationInput = document.getElementById("location-input");
+  const forecastGridEl = document.getElementById("forecast-grid");
 
   const demoSlots = [
     {
@@ -70,6 +73,34 @@ document.addEventListener("DOMContentLoaded", () => {
     weatherSummaryEl.textContent = summary;
   }
 
+  async function hydrateForecast() {
+    if (!forecastGridEl) return;
+
+    try {
+      const { today, days } = await getBeachForecast();
+      forecastGridEl.innerHTML = "";
+
+      days.forEach((day) => {
+        const item = document.createElement("article");
+        item.className = "forecast-day";
+        item.innerHTML = `
+          <div class="forecast-day__label">${day.label}</div>
+          <div class="forecast-day__temp">${day.tempC} °C</div>
+          <p class="forecast-day__desc">${day.description}</p>
+        `;
+        forecastGridEl.appendChild(item);
+      });
+
+      if (weatherSummaryEl) {
+        weatherSummaryEl.textContent = `Around ${today.tempC} °C now. Forecast tuned for beach cleanups.`;
+      }
+    } catch (error) {
+      if (weatherSummaryEl) {
+        weatherSummaryEl.textContent = "Could not load live readings. Using general beach vibes instead.";
+      }
+    }
+  }
+
   function renderCrew() {
     if (!crewListEl) return;
     crewListEl.innerHTML = "";
@@ -120,5 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   hydrateNextSlot();
   hydrateWeather();
+  hydrateForecast();
   renderCrew();
 });
